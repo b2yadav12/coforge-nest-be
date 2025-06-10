@@ -14,17 +14,14 @@ export class Post {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'varchar',
-    length: 255,
-  })
+  @Column({ type: 'varchar', length: 255 })
   title: string;
 
-  @Column({
-    type: 'text',
-    nullable: true,
-  })
+  @Column({ type: 'text', nullable: true })
   description: string;
+
+  @Column({ type: 'uuid', name: 'user_id', nullable: false })
+  userId: string;
 
   @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn({ name: 'user_id' })

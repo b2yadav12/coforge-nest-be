@@ -29,6 +29,7 @@ export class AuthService {
     return await this.userRepository
       .createQueryBuilder('user')
       .where('user.email = :text', { text })
+      .addSelect('user.password')
       .getOne();
   }
 

@@ -19,26 +19,16 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'varchar',
-    length: 255,
-  })
+  @Column({type: 'varchar', length: 255})
   name: string;
 
-  @Column({
-    type: 'varchar',
-    length: 255,
-    unique: true,
-  })
+  @Column({type: 'varchar', length: 255, unique: true})
   email: string;
 
   @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
 
-  @Column({
-    type: 'varchar',
-    length: 255,
-  })
+  @Column({type: 'varchar', length: 255, select: false})
   password: string;
 
   @CreateDateColumn()
