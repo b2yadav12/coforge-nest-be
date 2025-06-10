@@ -8,8 +8,7 @@ export const AuthDecorator = createParamDecorator(
   },
 );
 
-export const IS_PROTECTED_KEY = 'isProtected';
-export const IS_PUBLIC_KEY = 'isPublic';
+export const AUTH_REQUIRED_KEY = 'isProtected';
 
 // Mark a route as requiring authentication
-export const Protected = () => SetMetadata(IS_PROTECTED_KEY, true);
+export const RequiresLogin = () => SetMetadata(AUTH_REQUIRED_KEY, true);

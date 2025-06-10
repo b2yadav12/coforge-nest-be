@@ -3,7 +3,7 @@ import { Controller, Get, Param, Patch, Body, Post, NotFoundException } from '@n
 import { PostService } from './post.service';
 import { Post as PostDto, CreatePostDto } from './types';
 import { User } from '../auth/types';
-import { AuthDecorator } from '../utils/auth.decorator';
+import { AuthDecorator, RequiresLogin } from '../utils/auth.decorator';
 
 @Controller('posts')
 export class PostController {
@@ -25,6 +25,7 @@ export class PostController {
   }
 
   @Get(':id')
+  @RequiresLogin()
   async getById(@Param('id') id: string): Promise<PostDto> {
     const post = await this.postService.getPostById(id);
     if (!post) {
