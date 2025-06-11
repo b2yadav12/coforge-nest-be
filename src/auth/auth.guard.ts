@@ -12,7 +12,7 @@ export class JwtAuthGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    
+
     // Check if route is explicitly marked as protected
     const isProtected = this.reflector.getAllAndOverride<boolean>(AUTH_REQUIRED_KEY, [
       context.getHandler(),
